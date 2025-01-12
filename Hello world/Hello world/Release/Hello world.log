@@ -1,5 +1,0 @@
-﻿  main.cpp
-main.cpp(41): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-  正在生成代码
-  已完成代码的生成
-  Hello world.vcxproj -> D:\资料\烂活\Hello world\Release\Hello world.exe
