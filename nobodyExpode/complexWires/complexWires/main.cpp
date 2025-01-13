@@ -63,7 +63,7 @@ void getAcross(bool red, bool blue, bool star, bool LED)
 	for (int n = 0; n <= s-1;){
 		for (int i = x1; i <= x2; i++){
 			for (int j = y1; j <= y2; j++){
-				node[n].val = m[i][j];
+				node[n].val = m[j][i];
 				node[n].loc[0] = i;
 				node[n].loc[1] = j;
 				n++;
@@ -136,6 +136,11 @@ int main()
 		print(1);
 		while (print(2)){
 			isCut(node, env);
+			//cout << env.b << env.p << env.d;
+			for (int n = 0; n <= 15;){
+				cout << node[n].val;
+						n++;
+			}
 			input.blue = input.red = input.star = input.LED = 0;
 			delete[] node;
 		}
