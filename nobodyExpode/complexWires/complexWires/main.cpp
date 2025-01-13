@@ -13,6 +13,7 @@ char m[4][4] = {
 	{ 'C', 'D', 'P', 'B' }
 };
 Node* node;
+int s;
 Input input;
 Env env;
 int getmax(int a, int b)
@@ -27,7 +28,7 @@ int getmin(int a, int b)
 	a < b ? i = a : i = b;
 	return i;
 }
-void getAcross(bool red, bool blue, bool star, bool LED)
+int getAcross(bool red, bool blue, bool star, bool LED)//后续需要用到node数组的大小
 {
 	int x1=0, x2=3, y1=0, y2=3;
 	if (red){
@@ -70,11 +71,12 @@ void getAcross(bool red, bool blue, bool star, bool LED)
 			}
 		}
 	}
+	return s;
 }
-void isCut(Node* node,Env env)
+void isCut(Node* node,Env env,int s)
 {
 	int flag = 0;
-	for (int i = 0; i <= sizeof(node); i++)
+	for (int i = 0; i <= s; i++)
 	{
 		if (node[i].val == 'B'){
 			if (env.b){
@@ -86,7 +88,7 @@ void isCut(Node* node,Env env)
 		}
 	}
 	if (!flag){
-		for (int i = 0; i <= sizeof(node); i++)
+		for (int i = 0; i <= s; i++)
 		{
 			if (node[i].val == 'P'){
 				if (env.p){
@@ -99,7 +101,7 @@ void isCut(Node* node,Env env)
 		}
 	}
 	if (!flag){
-		for (int i = 0; i <= sizeof(node); i++)
+		for (int i = 0; i <= s; i++)
 		{
 			if (node[i].val == 'S'){
 				if (env.d){
@@ -112,7 +114,7 @@ void isCut(Node* node,Env env)
 		}
 	}
 	if (!flag){
-		for (int i = 0; i <= sizeof(node); i++)
+		for (int i = 0; i <= s; i++)
 		{
 			if (node[i].val == 'D'){
 				cout << "NOT Cut!!";
@@ -135,7 +137,7 @@ int main()
 		env.b = env.d = env.p = 0;
 		print(1);
 		while (print(2)){
-			isCut(node, env);
+			isCut(node, env,s);
 			//cout << env.b << env.p << env.d;
 			for (int n = 0; n <= 15;){
 				cout << node[n].val;

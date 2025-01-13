@@ -6,7 +6,8 @@
 using namespace std;
 extern Env env;
 extern Input input;
-void getAcross(bool red, bool blue, bool star, bool LED);
+extern int s;
+int getAcross(bool red, bool blue, bool star, bool LED);
 void printTitle()
 {
 	string art[] = {
@@ -263,7 +264,7 @@ bool print(int a){
 				menu(2, sec);
 				int tmp = control();
 				if (tmp == -9){
-					getAcross(input.red, input.blue, input.star, input.LED);
+					s=getAcross(input.red, input.blue, input.star, input.LED);
 					system("cls");
 					return 1;
 				}
