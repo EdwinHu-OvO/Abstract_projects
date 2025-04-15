@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <title>404 Not Found</title>
+        <style>
+            :root {
+                --main-color1: #fff;
+                --text-color1: #000;
+                --main-color2: #27454b;
+                --text-color2: #def5ef;
+                --rotate1: 180deg;
+                --rotate2: -180deg;
+            }
+            body {
+                /* transition: all 1s; */
+                margin: 0;
+            }
+            h1 span {
+                transform: rotate(180deg);
+                display: inline-block;
+            }
+            .main {
+                transition: all 0.5s;
+                height: 100vh;
+                width: 100vw;
+                position: fixed;
+                top: 0;
+                z-index: -1;
+                background-color: var(--main-color1);
+                color: var(--text-color1);
+            }
+            .padding {
+                padding: 8px;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --main-color2: #fff;
+                    --text-color2: #000;
+                    --main-color1: #27454b;
+                    --text-color1: #def5ef;
+                    --rotate1: -180deg;
+                    --rotate2: 0deg;
+                }
+                h1 span {
+                    transform: rotate(180deg);
+                }
+                h1 {
+                    transition: all 0.5s;
+                    transform: rotate(var(--rotate1));
+                }
+            }
+            #toggle:checked ~ .main {
+                background-color: var(--main-color2);
+                color: var(--text-color2);
+            }
+            #toggle:checked ~ .main h1 {
+                transition: all 0.3s;
+                transform: rotate(var(--rotate2));
+            }
+            #toggle ~ .main h1 {
+                transition: all 0.3s;
+            }
+            label {
+                user-select: none;
+                background-color: yellow;
+                padding: 2px;
+            }
+            .notice-area {
+                display: flex;
+                justify-content: center;
+            }
+            .notice {
+                text-align: center;
+                background-color: #1f97ff;
+                color: #ffffff;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 8px;
+                z-index: 1;
+                width: fit-content;
+            }
+        </style>
+    </head>
+    <input type="checkbox" id="toggle" hidden>
+    <label for="toggle">点击切换</label>
+    <body>
+        <!-- <div class="notice-area">
+            <div class="notice">
+                切换好了 ：）
+            </div>
+        </div> -->
+        <div class="main">
+            <div class="padding">
+                <center>
+                    <h1><span>404</span> Already Found</h1>
+                </center>
+                <hr>
+                <center>xnign</center>
+            </div>
+        </div>
+    </body>
+</html>
