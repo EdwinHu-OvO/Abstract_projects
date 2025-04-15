@@ -1,5 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>404 Not Found</title>
         <style>
@@ -48,6 +51,20 @@
                     transition: all 0.5s;
                     transform: rotate(var(--rotate1));
                 }
+                .notice::after {
+                    content: "切换浅色模式 ：）";
+                }
+                .notice1::after {
+                    content: "切换深色模式 ：）";
+                }
+            }
+            @media (prefers-color-scheme: light) {
+                .notice::after {
+                    content: "切换深色模式 ：）";
+                }
+                .notice1::after {
+                    content: "切换浅色模式 ：）";
+                }
             }
             #toggle:checked ~ .main {
                 background-color: var(--main-color2);
@@ -64,31 +81,79 @@
                 user-select: none;
                 background-color: yellow;
                 padding: 2px;
+                cursor: pointer;
+                z-index: 10;
             }
             .notice-area {
                 display: flex;
                 justify-content: center;
             }
             .notice {
+                position: fixed;
                 text-align: center;
                 background-color: #1f97ff;
                 color: #ffffff;
                 padding: 10px;
                 font-size: 16px;
                 border-radius: 8px;
-                z-index: 1;
                 width: fit-content;
+                margin-top: -50px;
+                opacity: 0;
+                transition: opacity 0.3s, margin-top 0.3s;
+                pointer-events: none;
+            }
+            .notice1 {
+                position: fixed;
+                text-align: center;
+                background-color: #1f97ff;
+                color: #ffffff;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 8px;
+                width: fit-content;
+                margin-top: -50px;
+                opacity: 0;
+                transition: opacity 0.3s, margin-top 0.3s;
+                pointer-events: none;
+            }
+            /* 切换动画部分 */
+            #toggle:checked ~ .notice-area .notice {
+                display: block;
+                animation: notification 1.8s forwards;
+            }
+            #toggle:not(:checked) ~ .notice-area .notice1 {
+                display: block;
+                animation: notification 1.8s forwards;
+            }
+            @keyframes notification {
+                0% {
+                    margin-top: -50px;
+                    opacity: 0;
+                }
+                15% {
+                    margin-top: 20px;
+                    opacity: 1;
+                }
+                85% {
+                    margin-top: 20px;
+                    opacity: 1;
+                }
+                100% {
+                    margin-top: -50px;
+                    opacity: 0;
+                }
             }
         </style>
     </head>
-    <input type="checkbox" id="toggle" hidden>
-    <label for="toggle">点击切换</label>
     <body>
-        <!-- <div class="notice-area">
+        <input type="checkbox" id="toggle" hidden>
+        <label for="toggle">点击切换</label>
+        <div class="notice-area">
             <div class="notice">
-                切换好了 ：）
             </div>
-        </div> -->
+            <div class="notice1">
+            </div>
+        </div>
         <div class="main">
             <div class="padding">
                 <center>
