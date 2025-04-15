@@ -78,11 +78,18 @@
                 transition: all 0.3s;
             }
             label {
+                position: fixed;
+                top: 10px;
+                left: 10px;
                 user-select: none;
-                background-color: yellow;
-                padding: 2px;
+                font-size: 18px;
+                padding: 10px 30px 30px 10px;
                 cursor: pointer;
                 z-index: 10;
+            }
+            label div {
+                padding: 3px;
+                background-color: yellow;
             }
             .notice-area {
                 display: flex;
@@ -147,7 +154,7 @@
     </head>
     <body>
         <input type="checkbox" id="toggle" hidden>
-        <label for="toggle">点击切换</label>
+        <label for="toggle"><div>点击切换</div></label>
         <div class="notice-area">
             <div class="notice">
             </div>
