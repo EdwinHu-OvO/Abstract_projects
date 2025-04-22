@@ -11,8 +11,8 @@
                 --text-color1: #000;
                 --main-color2: #27454b;
                 --text-color2: #def5ef;
-                --rotate1: 180deg;
-                --rotate2: -180deg;
+                --rotate1: -180deg;
+                --rotate2: 180deg;
             }
             body {
                 /* transition: all 1s; */
@@ -41,8 +41,8 @@
                     --text-color2: #000;
                     --main-color1: #27454b;
                     --text-color1: #def5ef;
-                    --rotate1: -180deg;
-                    --rotate2: 0deg;
+                    --rotate1: 0deg;
+                    --rotate2: 180deg;
                 }
                 h1 span {
                     transform: rotate(180deg);
@@ -73,9 +73,11 @@
             #toggle:checked ~ .main h1 {
                 transition: all 0.3s;
                 transform: rotate(var(--rotate2));
+                transform-origin: unset;
             }
             #toggle ~ .main h1 {
                 transition: all 0.3s;
+                transform-origin: left top;
             }
             label {
                 position: fixed;
@@ -132,6 +134,12 @@
                 display: block;
                 animation: notification 1.8s forwards;
             }
+            #toggle:checked ~ .main .animated-text {
+                animation: flying 0.8s;
+            }
+            #toggle:not(:checked) ~ .main .animated-text {
+                animation: flying-rev 0.8s;
+            }
             @keyframes notification {
                 0% {
                     margin-top: -50px;
@@ -150,6 +158,76 @@
                     opacity: 0;
                 }
             }
+            @keyframes flying {
+                0% {
+                    transform: translate(0, 0);
+                }
+                10% {
+                    transform: translate(100px, 50px) rotate(45deg);
+                }
+                20% {
+                    transform: translate(200px, -80px) rotate(90deg);
+                }
+                30% {
+                    transform: translate(50px, 200px) rotate(135deg);
+                }
+                40% {
+                    transform: translate(-100px, 150px) rotate(180deg);
+                }
+                50% {
+                    transform: translate(-200px, -100px) rotate(225deg);
+                }
+                60% {
+                    transform: translate(150px, -200px) rotate(270deg);
+                }
+                70% {
+                    transform: translate(-150px, -180px) rotate(315deg);
+                }
+                80% {
+                    transform: translate(180px, 100px) rotate(360deg);
+                }
+                90% {
+                    transform: translate(-50px, -50px) rotate(405deg);
+                }
+                100% {
+                    transform: translate(0, 0) rotate(360deg);
+                }
+            }
+            @keyframes flying-rev {
+                0% {
+                    transform: translate(0, 0);
+                }
+                10% {
+                    transform: translate(100px, 50px) rotate(45deg);
+                }
+                20% {
+                    transform: translate(200px, -80px) rotate(90deg);
+                }
+                30% {
+                    transform: translate(50px, 200px) rotate(135deg);
+                }
+                40% {
+                    transform: translate(-100px, 150px) rotate(180deg);
+                }
+                50% {
+                    transform: translate(-200px, -100px) rotate(225deg);
+                }
+                60% {
+                    transform: translate(150px, -200px) rotate(270deg);
+                }
+                70% {
+                    transform: translate(-150px, -180px) rotate(315deg);
+                }
+                80% {
+                    transform: translate(180px, 100px) rotate(360deg);
+                }
+                90% {
+                    transform: translate(-50px, -50px) rotate(405deg);
+                }
+                100% {
+                    transform: translate(0, 0) rotate(360deg);
+                }
+            }
         </style>
     </head>
     <body>
@@ -166,10 +244,10 @@
                 <center>
                     <h1><span>404</span> Already Found</h1>
                 </center>
-                <hr>
-                <center>xnign</center>
+                <hr class="animated-text" style="animation-duration: 0.3s;">
+                <center class="animated-text" style="animation-duration: 0.8s;">xnign</center>
                 <br>
-                <center style="font-size: 10px;">Powered by Pure CSS</center>
+                <center class="animated-text" style="font-size: 10px; animation-duration: 1s;">Powered by Pure CSS</center>
             </div>
         </div>
     </body>
